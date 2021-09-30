@@ -5,6 +5,7 @@
  */
 package com.DBS.T26Hackathon.services;
 import com.DBS.T26Hackathon.models.Customer;
+import com.DBS.T26Hackathon.models.Order;
 import com.DBS.T26Hackathon.models.Product;
 import com.DBS.T26Hackathon.repository.CustomerRepository;
 import com.DBS.T26Hackathon.repository.ProductRepository;
@@ -27,5 +28,9 @@ public class CustomerService {
     
     public Customer findByUserName(String username) {
     	return customerRepository.findByusername(username);
+    }
+    
+    public Order getCurrentCart(long customerId) {
+        return customerRepository.findById(customerId).get().getCart();
     }
 }

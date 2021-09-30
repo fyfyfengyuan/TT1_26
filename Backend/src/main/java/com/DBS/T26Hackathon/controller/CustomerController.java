@@ -1,7 +1,9 @@
 package com.DBS.T26Hackathon.controller;
 
 
+import com.DBS.T26Hackathon.models.Category;
 import com.DBS.T26Hackathon.models.Customer;
+import com.DBS.T26Hackathon.models.Order;
 import com.DBS.T26Hackathon.services.CustomerService;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -30,6 +32,10 @@ public class CustomerController {
         return customerService.getAllCustomers();
     }
     
+    @GetMapping("/getCurrentCart")
+    public Order getCurrentCart(@RequestParam(value = "customerId",required = true) Long customerId) {
+        return customerService.getCurrentCart(customerId);
+    }
     
     @GetMapping("/findByUser")
     public Customer findByUser(String username) {
