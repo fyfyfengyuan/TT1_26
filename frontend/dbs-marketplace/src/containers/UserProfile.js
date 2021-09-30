@@ -45,13 +45,10 @@ const UserProfile=()=>{
     ]
     const [userList, setUserList]= useState(dummyPurchased);
     const [username, setUsername] = useState("TOM");
-    const [fullname, setFullname] = useState("Tom Tan Lim Keng");
     return (
         <div>
             <img src={ProfileImg} alt="ProfileImg" style={{margin:"20px", height:"150px", width:"auto"}}/>
             <h3>{username}</h3>
-            <h3>{fullname}</h3>
-
             {userList && userList.map((purchasedItem)=>(
                 <ProductItem productData={purchasedItem} isHome={false}/>
             )
