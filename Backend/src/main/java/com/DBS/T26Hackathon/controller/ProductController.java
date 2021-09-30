@@ -22,7 +22,7 @@ public class ProductController {
     @Autowired
     ProductService productService;
     
-    @GetMapping("/getAllProduct")
+    @GetMapping("/getAllProducts")
     public List<Product> fetchAll() {
             return productService.getAllProducts();
     }
