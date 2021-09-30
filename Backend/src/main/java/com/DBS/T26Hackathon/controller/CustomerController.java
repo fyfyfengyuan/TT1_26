@@ -24,4 +24,17 @@ public class CustomerController {
     public List<Customer> fetchAll() {
         return customerService.getAllCustomers();
     }
+    
+    
+    @GetMapping("/login")
+    public String login(String username,String password) {
+    	Customer user = customerService.findByUserName(username);
+    	if (user.getPassword()==password) {
+    	return "Success";
+    	}else {
+    		return "False";
+    	}
+  
+    }
+    
 }
