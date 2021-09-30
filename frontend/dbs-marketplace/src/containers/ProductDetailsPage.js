@@ -1,6 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import { useLocation } from "react-router";
 const ProductDetailsPage = () => {
+  const location = useLocation();
+
+  const [prodDetails, setProdDetails] = useState(location?location.state.productDetails:null);
   const dummyProduct = [
     {
       id: 1,
@@ -13,7 +16,6 @@ const ProductDetailsPage = () => {
       qty: 50,
     },
   ];
-  const location = useLocation();
   console.log(location.state.productDetails);
   //const [product, setProduct] = useState(dummyProduct);
 
@@ -25,20 +27,19 @@ const ProductDetailsPage = () => {
           border="1"
           margin-left="100px"
           width="400px"
-          src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+          src={prodDetails.image}
           //src=dummyProduct.
         />
       </div>
       <div className="text-details" align="right">
         <h1 className="product-title" align="center">
-          Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
+        {prodDetails.title}
         </h1>
         <h4 className="product-category" align="center">
           Backpacks
         </h4>
         <p className="product-details" align="center" margin-top="50px">
-          Your perfect pack for everyday use and walks in the forest. Stash your
-          laptop (up to 15 inches) in the padded sleeve, your everyday
+          {prodDetails.description}
         </p>
         <div className="Button" align="center">
           <button className="btn btn-danger btn-sm m-2">Add To Cart</button>
