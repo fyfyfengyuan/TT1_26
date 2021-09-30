@@ -7,7 +7,9 @@ import Usercart from "./containers/Usercart";
 import ProductDetailsPage from "./containers/ProductDetailsPage";
 import ProductItem from "./components/ProductItem";
 import "./App.css";
+import {useState} from 'react';
 function App() {
+  const [user,setLoginUser] = useState({})
   return (
     <Router>
       <div className="App">
@@ -18,7 +20,7 @@ function App() {
               <Home />
             </Route>
             <Route path="/Login">
-              <Login />
+              <Login setLoginUser={setLoginUser}/>
             </Route>
             <Route path="/UserProfile">
               <UserProfile />
