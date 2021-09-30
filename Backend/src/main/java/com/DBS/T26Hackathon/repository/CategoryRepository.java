@@ -9,10 +9,9 @@ package com.DBS.T26Hackathon.repository;
  *
  * @author markt
  */
-import com.DBS.T26Hackathon.models.Customer;
-import java.util.List;
+import com.DBS.T26Hackathon.models.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
+public interface CategoryRepository extends JpaRepository<Category, Long> {
 
 }

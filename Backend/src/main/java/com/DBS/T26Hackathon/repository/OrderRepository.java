@@ -5,14 +5,15 @@
  */
 package com.DBS.T26Hackathon.repository;
 
+import com.DBS.T26Hackathon.models.Order;
+import com.DBS.T26Hackathon.models.OrderItem;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  *
  * @author markt
  */
-import com.DBS.T26Hackathon.models.Customer;
-import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
-
+public interface OrderRepository extends JpaRepository<Order, Long> {
+    
 }
