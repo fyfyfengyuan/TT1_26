@@ -1,36 +1,45 @@
 import React, {useState} from "react";
+import { useHistory } from "react-router-dom";
 
-const Login = props => {
-  const initialUserState = {
-    username:"",
-    password:"",
+const Login = props => { 
+  const history = useHistory();  
+  const [username, setUserName] = useState();
+  const [password, setPassword] = useState();
+
+  async function handleLogin(credentials) {
+    return fetch('http://localhost:8080/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
+      })
+        .then(data => data.json())
   };
 
-  const [user, setUser] = useState(initialUserState);
+  const login = async e => {
+    e.preventDefault();
+    const token = await handleLogin({
+        username,
+        password
+    });
 
-  const handleInputChange = event => {
-    const { username, value } = event.target; // get the name and value of the target and update with new name/id
-    setUser({ ...user, [username]: value });
-  };
-
-  const login = () => {
-    props.login(user) //function passed in from app.js async login
-    props.history.push('/'); // go back to home
+    history.push("/home");
   }
 
   return (
     <div className="submit-form">
       <div>
         <div className="form-group">
-          <label htmlFor="user">Username</label>
+          <label htmlFor="username">Username</label>
           <input
             type="text"
             className="form-control"
-            id="name"
+            id="username"
             required
-            value={user.username}
-            onChange={handleInputChange}
-            name="name"
+            value={username}
+            onChange={e => setUserName(e.target.value)}
+            name="username"
           />
         </div>
 
@@ -41,8 +50,8 @@ const Login = props => {
             className="form-control"
             password="password"
             required
-            value={user.password}
-            onChange={handleInputChange}
+            value={password}
+            onChange={e => setPassword(e.target.value)}
             name="password"
           />
         </div>
