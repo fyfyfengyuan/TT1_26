@@ -5,37 +5,59 @@
  */
 package com.DBS.T26Hackathon.models;
 
-import com.DBS.T26Hackathon.enumeration.Gender;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author markt
  */
 
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Customer {
 
+    @Id
+    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(nullable = false, length = 2000)
+    @NotNull
     private String username;
 
+    @Column(nullable = false, length = 2000)
+    @NotNull
     private String password;
 
+    @Column(nullable = false, length = 2000)
+    @NotNull
     private String email;
     
-    private String firstName;
+    @Column(nullable = false, length = 2000)
+    @NotNull
+    private String first_name;
     
-    private String lastName;
+    @Column(nullable = false, length = 2000)
+    @NotNull
+    private String last_name;
     
-    private String postalCode;
+    @Column(nullable = false, length = 2000)
+    @NotNull
+    private String postal_code;
     
-    private Gender gender;
+    @Column(nullable = false, length = 2000)
+    @NotNull
+    private String gender;
     
-    
-    public Customer() {}
-    
-    public Customer(final String username, final String password) {
-        this.username = username;
-        this.password = password;
-    }
 }
 

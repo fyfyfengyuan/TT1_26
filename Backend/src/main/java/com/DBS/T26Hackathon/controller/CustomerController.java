@@ -15,11 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/customers")
 public class CustomerController {
 
-	private static final String template = "Hello, %s!";
-	private final AtomicLong counter = new AtomicLong();
-
-	@GetMapping("/getAllCustomers")
-	public List<Customer> fetchAll() {
-		return new ArrayList<Customer>();
-	}
+    @GetMapping("/getAllCustomers")
+    public List<Customer> fetchAll() {
+        return new ArrayList<Customer>();
+    }
 }

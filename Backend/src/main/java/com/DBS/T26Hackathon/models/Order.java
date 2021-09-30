@@ -7,6 +7,9 @@ package com.DBS.T26Hackathon.models;
 
 import com.DBS.T26Hackathon.enumeration.OrderStatus;
 import java.time.LocalDateTime;
+import java.util.List;
+import javax.persistence.Column;
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,5 +28,9 @@ public class Order {
     
     private OrderStatus status;
     
+    @Column(nullable = false, columnDefinition = "TIMESTAMP")
+    @NotNull
     private LocalDateTime createdAt;
+    
+    private List<OrderItem> orderItems;
 }
