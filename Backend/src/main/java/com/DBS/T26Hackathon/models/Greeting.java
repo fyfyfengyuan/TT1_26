@@ -1,4 +1,4 @@
-package com.DBS.T26Hackathon;
+package com.DBS.T26Hackathon.models;
 
 public class Greeting {
 
