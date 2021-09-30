@@ -6,6 +6,7 @@
 package com.DBS.T26Hackathon.services;
 
 import com.DBS.T26Hackathon.enumeration.OrderStatus;
+import com.DBS.T26Hackathon.exception.CustomerNotFoundException;
 import com.DBS.T26Hackathon.exception.InsufficientQuantityException;
 import com.DBS.T26Hackathon.exception.ProductNotFoundException;
 import com.DBS.T26Hackathon.models.Customer;
@@ -42,29 +43,37 @@ public class OrderService {
     @Autowired
     CustomerRepository customerRepository;
     
-//    @Transactional
-//    public Order AddToCart(OrderVO vo) throws InsufficientQuantityException, ProductNotFoundException {
-//        
-////        Customer customer = customerRepository.findById(vo.getCustomerId())
-////                .orElseThrow(() -> new CustomerNotFoundException(String.valueOf(vo.getCustomerId())));
-////        Order newOrder = customer.getCart() != null ? customer.getCart() : new Order();
-//        newOrder.setCreatedAt(LocalDateTime.now());
-//        newOrder.setStatus(OrderStatus.PENDING);
-//        vo.updateOrder(newOrder);
-//
-//        for(OrderItem o: newOrder.getOrderItems()){
-//            Product product = productRepository.findById(o.getProductId())
-//                .orElseThrow(() -> new ProductNotFoundException(String.valueOf(o.getProductId())));
-//            if(product.getQty()<o.getOrderQty()){
-//                throw new InsufficientQuantityException(String.valueOf(product.getId()));
-//            }
-//            product.setQty(product.getQty() - o.getOrderQty());
-//            productRepository.saveAndFlush(product);
-//            orderItemRepository.saveAndFlush(o);
-//        }
-//        
-//        orderRepository.saveAndFlush(newOrder);
-//        return newOrder;
-//    }
-
+    @Transactional
+    public Order addToCart(OrderVO vo) throws InsufficientQuantityException, ProductNotFoundException, CustomerNotFoundException {
+        
+        Customer customer = customerRepository.findById(vo.getCustomerId())
+                .orElseThrow(() -> new CustomerNotFoundException(String.valueOf(vo.getCustomerId())));
+        Order newOrder = customer.getCart();
+        
+        if(newOrder == null){
+            newOrder = new Order();
+            newOrder.setCreatedAt(LocalDateTime.now());
+            newOrder.setStatus(OrderStatus.PENDING);
+        }
+        
+        vo.updateOrder(newOrder);
+        
+        for(OrderItem o: newOrder.getOrderItems()){
+            Product product = productRepository.findById(o.getProductId())
+                .orElseThrow(() -> new ProductNotFoundException(String.valueOf(o.getProductId())));
+            if(product.getQty()<o.getOrderQty()){
+                throw new InsufficientQuantityException(String.valueOf(product.getId()));
+            }
+            orderItemRepository.saveAndFlush(o);
+        }
+        customer.setCart(newOrder);
+        orderRepository.saveAndFlush(newOrder);
+        customerRepository.saveAndFlush(customer);
+        return newOrder;
+    }
+    
+    @Transactional
+    public void checkout(long customerId){
+        
+    }
 }
