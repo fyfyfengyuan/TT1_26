@@ -1,4 +1,4 @@
-import Navbar from 'src/Navbar';
+import Navbar from '../../../src/Navbar';
 import Home from './containers/Home';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import Login from "./containers/Login";
