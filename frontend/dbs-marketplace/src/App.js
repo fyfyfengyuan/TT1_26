@@ -1,4 +1,4 @@
-import Navbar from "./Navbar";
+import Navigation from "./components/Navigation/Navigation";
 import Home from "./containers/Home";
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import Login from "./containers/Login";
@@ -6,14 +6,13 @@ import UserProfile from './containers/UserProfile';
 import Usercart from './containers/Usercart';
 import ProductDetailsPage from './containers/ProductDetailsPage';
 import ProductItem from "./components/ProductItem";
+import "./App.css";
 function App() {
-
-
 
   return (
     <Router>
     <div className="App">
-      <Navbar/>
+      <Navigation/>
       <div className="content">
         <Switch>   
           <Route exact path="/">
@@ -22,7 +21,7 @@ function App() {
           <Route path="/Login">
             <Login/>
           </Route>
-          <Route path="UserProfile">
+          <Route path="/UserProfile">
             <UserProfile/>
           </Route>
           <Route path="/Usercart">
