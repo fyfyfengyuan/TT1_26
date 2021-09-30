@@ -13,10 +13,14 @@ const Login = ({setLoginUser}) => {
     setUser({...user, [name]:value});
   };
   const login =()=>{
-    axios.post("http://localhost:8080/Login",user)
+    const loginurl = "http://localhost:8080/customers/login?username=" + user.name + "&password=" + user.password;
+    axios.post(loginurl)
       .then(res=> {alert(res.data.message)
         setLoginUser(res.data.user)
+        console.log(res.data);
         history.push("/")
+      }).catch((error)=>{
+        alert("Login Failed")
       })
   }
 
