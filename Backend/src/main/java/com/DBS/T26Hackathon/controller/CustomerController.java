@@ -42,13 +42,13 @@ public class CustomerController {
     public LinkedHashMap<String, Object> login(String username,String password) {
     	Customer user = customerService.findByUserName(username);
     	LinkedHashMap<String, Object> status = new LinkedHashMap<String,Object>();
-    	boolean login =false;
+    	int login = -1;
     	if (user != null) {
 	    	status.put("id", user.getId());
 	    	status.put("username", username);
-	    	
+	    	login = 0;
 	    	if (user.getPassword().equals(password)) {
-	    		login = true;
+	    		login = 1;
 	    		status.put("login", login);
 	    		return status;
 	    	}
