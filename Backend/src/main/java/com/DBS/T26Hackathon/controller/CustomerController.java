@@ -1,7 +1,9 @@
 package com.DBS.T26Hackathon.controller;
 
 
+import com.DBS.T26Hackathon.models.Category;
 import com.DBS.T26Hackathon.models.Customer;
+import com.DBS.T26Hackathon.models.Order;
 import com.DBS.T26Hackathon.services.CustomerService;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -14,6 +16,7 @@ import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +33,10 @@ public class CustomerController {
         return customerService.getAllCustomers();
     }
     
+    @GetMapping("/getCurrentCart")
+    public Order getCurrentCart(@RequestParam(value = "customerId",required = true) Long customerId) {
+        return customerService.getCurrentCart(customerId);
+    }
     
     @GetMapping("/findByUser")
     public Customer findByUser(String username) {
@@ -37,17 +44,25 @@ public class CustomerController {
   
     }
     
-    @GetMapping("/login")
+    @PostMapping("/login")
     public LinkedHashMap<String, Object> login(String username,String password) {
     	Customer user = customerService.findByUserName(username);
-    	LinkedHashMap<String, Object> rtn = new LinkedHashMap<String,Object>();
-    	rtn.put("id", user.getId());
-    	rtn.put("username", username);
-    	if (user.getPassword().equals(password)) {
-    		return rtn;
-    	}else {
-    		return new LinkedHashMap<String,Object>();
+    	LinkedHashMap<String, Object> status = new LinkedHashMap<String,Object>();
+    	int login = -1;
+    	if (user != null) {
+	    	status.put("id", user.getId());
+	    	status.put("username", username);
+	    	login = 0;
+	    	if (user.getPassword().equals(password)) {
+	    		login = 1;
+	    		status.put("login", login);
+	    		return status;
+	    	}
     	}
+    	
+    	status.put("login", login);
+    	return status;
+
   
     }
     
