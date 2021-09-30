@@ -25,7 +25,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "product")
 public class Product {
 
     @Id
@@ -52,5 +51,5 @@ public class Product {
     private String image;
     
     @Column(nullable = false)
-    private Integer qty;
+    private long qty;
 }

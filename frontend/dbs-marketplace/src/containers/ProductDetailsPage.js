@@ -17,29 +17,30 @@ const ProductDetailsPage = () => {
   //const [product, setProduct] = useState(dummyProduct);
 
   return (
-    <div className="product">
+    <div className="product" margin="50px" padding="50px">
       <div className="product-image">
         <img
           align="left"
           border="1"
-          margin="50px"
+          margin-left="100px"
           width="400px"
           src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+          //src=dummyProduct.
         />
       </div>
       <div className="text-details" align="right">
-        <div className="product-title" align="center">
+        <h1 className="product-title" align="center">
           Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
-        </div>
-        <div className="product-category" align="center">
+        </h1>
+        <h4 className="product-category" align="center">
           Backpacks
-        </div>
-        <div className="product-details" align="center">
+        </h4>
+        <p className="product-details" align="center" margin-top="50px">
           Your perfect pack for everyday use and walks in the forest. Stash your
           laptop (up to 15 inches) in the padded sleeve, your everyday
-        </div>
+        </p>
         <div className="Button" align="center">
-          <button>Add To Cart</button>
+          <button className="btn btn-danger btn-sm m-2">Add To Cart</button>
         </div>
       </div>
     </div>
