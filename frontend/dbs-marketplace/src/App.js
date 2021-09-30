@@ -1,11 +1,11 @@
-import Navbar from '../../../src/Navbar';
-import Home from './containers/Home';
+import Navbar from "./Navbar";
+import Home from "./containers/Home";
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import Login from "./containers/Login";
 import UserProfile from './containers/UserProfile';
 import Usercart from './containers/Usercart';
 import ProductDetailsPage from './containers/ProductDetailsPage';
-
+import ProductItem from "./components/ProductItem";
 function App() {
 
 
@@ -34,7 +34,9 @@ function App() {
           <Route path="/Checkoutpage">
             <ProductDetailsPage />
           </Route>
-
+          <Route path="/test">
+            <ProductItem />
+          </Route>
 
         </Switch>
  
