@@ -26,13 +26,20 @@ public class CustomerController {
     }
     
     
+    @GetMapping("/findByUser")
+    public Customer findByUser(String username) {
+    	return customerService.findByUserName(username);
+  
+    }
+    
     @GetMapping("/login")
     public String login(String username,String password) {
     	Customer user = customerService.findByUserName(username);
-    	if (user.getPassword()==password) {
+    	
+    	if (user.getPassword().equals(password)) {
     	return "Success";
     	}else {
-    		return "False";
+    		return user.getPassword();
     	}
   
     }
