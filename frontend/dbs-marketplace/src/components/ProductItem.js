@@ -1,14 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useHistory } from "react-router";
+
 
 
 const ProductItem = (props)=>{
+  const history = useHistory();
+  const [data, setData] = useState(props.productData);
 
+  const productDetailsHandler = ()=>{
+    history.push({
+      pathname: "/ProductDetailsPage",
+      state: { productDetails: data },
+    });
+  }
     return(
         <Card style={{display:"flex", flexDirection:"row", borderColor:"black", padding:"30px", margin:"20px"}}>
         <CardMedia
@@ -31,7 +41,7 @@ const ProductItem = (props)=>{
           </Typography>
         </CardContent>
         {props.isHome && <CardActions>
-          <Button size="small">Product Details</Button>
+          <Button onClick={productDetailsHandler} size="small">Product Details</Button>
         </CardActions>}
         
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useLocation } from "react-router";
 const ProductDetailsPage = () => {
   const dummyProduct = [
     {
@@ -13,7 +13,8 @@ const ProductDetailsPage = () => {
       qty: 50,
     },
   ];
-
+  const location = useLocation();
+  console.log(location.state.productDetails);
   //const [product, setProduct] = useState(dummyProduct);
 
   return (
