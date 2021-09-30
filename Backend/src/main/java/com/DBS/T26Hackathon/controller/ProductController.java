@@ -31,4 +31,11 @@ public class ProductController {
     public List<Product> addToCart() {
             return new ArrayList<Product>();
     }
+    
+    @PostMapping("/checkOut")
+    public boolean checkOut() {
+    		
+    		
+            return false;
+    }
 }

@@ -17,8 +17,8 @@ public class OrderVO {
     private long customerId;
     private List<OrderItem> orderItems;
     
-    public void updateOrder(Order order){
-        order.setCustomerId(this.customerId);
-        order.setOrderItems(this.orderItems);
-    }
+//    public void updateOrder(Order order){
+//       order.setCustomerId(this.customerId);
+//        order.setOrderItems(this.orderItems);
+//  }
 }

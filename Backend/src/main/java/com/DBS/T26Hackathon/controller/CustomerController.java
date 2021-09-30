@@ -35,7 +35,6 @@ public class CustomerController {
     @GetMapping("/findByUser")
     public Customer findByUser(String username) {
     	return customerService.findByUserName(username);
-  
     }
     
     @PostMapping("/login")
@@ -47,13 +46,18 @@ public class CustomerController {
 	    	status.put("id", user.getId());
 	    	status.put("username", username);
 	    	login = 0;
+	    	// login Successful
 	    	if (user.getPassword().equals(password)) {
 	    		login = 1;
+		    	status.put("id", user.getId());
+		    	status.put("username", username);
 	    		status.put("login", login);
 	    		return status;
 	    	}
     	}
-    	
+    	// login Fails
+    	status.put("id", null);
+    	status.put("username", null);
     	status.put("login", login);
     	return status;
 
