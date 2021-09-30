@@ -1,7 +1,10 @@
 import Navbar from '../../../src/Navbar';
-import Home from './Home';
+import Home from './containers/Home';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
-
+import Login from "./containers/Login";
+import UserProfile from './containers/UserProfile';
+import Usercart from './containers/Usercart';
+import ProductDetailsPage from './containers/ProductDetailsPage';
 
 function App() {
 
