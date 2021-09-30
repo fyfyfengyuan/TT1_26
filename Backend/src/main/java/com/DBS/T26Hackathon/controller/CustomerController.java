@@ -62,8 +62,6 @@ public class CustomerController {
     	
     	status.put("login", login);
     	return status;
-
-  
     }
     
 }
