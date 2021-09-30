@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+.nav_logo {
+  height: 20%;
+  width: auto;
+  padding:10%;
+}
+
+.no_deco {
+  text-decoration: none;
+  color: white;
+}

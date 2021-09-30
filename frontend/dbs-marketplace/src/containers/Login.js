@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
-const Login = ({setLoginUser}) => { 
-  const history = useHistory();  
+const Login = ({setLoginUser}) => {
+  const history = useHistory();
   const[user,setUser] = useState({
     name:"",
     password: "",
@@ -49,7 +49,7 @@ const Login = ({setLoginUser}) => {
         <div className="self-center mb-6 text-xl font-light text-gray-600">
             Login To Your Account
         </div>
-      
+
         <div className= "col s12" style={{padding:"20px"}}>
           <div className="submit-form">
             <div>
@@ -89,7 +89,7 @@ const Login = ({setLoginUser}) => {
     </div>
   );
 
- 
+
 };
 
 export default Login;
