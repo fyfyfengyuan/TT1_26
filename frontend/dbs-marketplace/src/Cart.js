@@ -26,7 +26,7 @@ const Cart = ({props})=>{
             
         }
 
-    }
+    
        
     return(
         <section className="main-Cart-section">
@@ -55,8 +55,10 @@ const Cart = ({props})=>{
         </section>
         
 
-       
+    
     );
+    
 
-    }
+}
     export default Cart
+    
