@@ -22,16 +22,18 @@ const ProductItem = (props)=>{
           <Typography gutterBottom variant="h5" component="div">
             {props.productData.title}
           </Typography>
-          <Typography variant="body2" color="text.secondary" style={{textAlign:"left"}}>
+          {props.isHome && <Typography variant="body2" color="text.secondary" style={{textAlign:"left"}}>
             Price: ${props.productData.price}
-          </Typography>
+          </Typography>}
+          
           <Typography variant="body2" color="text.secondary" style={{textAlign:"left"}}>
-            Quantity: ${props.productData.qty}
+            Quantity: {props.productData.qty}
           </Typography>
         </CardContent>
-        <CardActions>
+        {props.isHome && <CardActions>
           <Button size="small">Product Details</Button>
-        </CardActions>
+        </CardActions>}
+        
         </div>
         
       </Card>
