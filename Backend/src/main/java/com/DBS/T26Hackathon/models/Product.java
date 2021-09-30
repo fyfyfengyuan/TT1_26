@@ -6,11 +6,17 @@
 package com.DBS.T26Hackathon.models;
 
 import java.math.BigDecimal;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author markt
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
     private long productId;
@@ -26,7 +32,5 @@ public class Product {
     private String image;
     
     private Integer qty;
-    
-    Product(){}
     
 }

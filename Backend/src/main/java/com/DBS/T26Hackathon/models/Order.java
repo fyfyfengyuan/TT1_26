@@ -7,11 +7,17 @@ package com.DBS.T26Hackathon.models;
 
 import com.DBS.T26Hackathon.enumeration.OrderStatus;
 import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author markt
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Order {
     private long orderId;
     

@@ -14,7 +14,7 @@ import com.DBS.T26Hackathon.enumeration.Gender;
 
 public class Customer {
 
-    private Long id;
+    private long id;
 
     private String username;
 

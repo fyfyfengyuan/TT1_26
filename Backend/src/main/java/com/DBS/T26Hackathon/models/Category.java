@@ -5,10 +5,17 @@
  */
 package com.DBS.T26Hackathon.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  *
  * @author markt
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Category {
     private long categoryId;
     
