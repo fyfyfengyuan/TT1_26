@@ -124,7 +124,7 @@ public class Customer {
 		this.gender = gender;
 	}
     
-//    @Column(nullable = true)
-//    @OrderColumn
-//    private Order cart;
+    @Column(nullable = true)
+    @OrderColumn
+    private Order cart;
 }
