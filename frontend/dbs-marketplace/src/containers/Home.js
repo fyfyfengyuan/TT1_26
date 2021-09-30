@@ -190,7 +190,7 @@ const Home = () =>{
     return(
         <div style={{margin:"20px"}}>
             {productList.map((product)=>(
-                <ProductItem productData = {product}
+                <ProductItem productData = {product} isHome={true}
 
                 />
             ))}
